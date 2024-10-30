@@ -1,0 +1,13 @@
+<li>
+    <a [href]="href" (click)="toggleSubMenu($event)"> <!-- Pass the event -->
+      <!-- <i [class]="iconClass"></i> -->
+      <img src={{iconName}} alt="{{ title }}" class="nav-icon">
+      <span>{{ title }}</span>
+    </a>
+    <ul *ngIf="isSubMenuOpen"> 
+      <li *ngFor="let subItem of subItems">
+        <a [href]="subItem.href">{{ subItem.title }}</a>
+      </li>
+    </ul>
+  </li>
+  

@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+      <app-nav-item
+        *ngFor="let item of navItems"
+        [href]="item.href"
+        [iconName]="item.iconName"
+        [title]="item.title"
+        [subItems]="item.subItems">
+      </app-nav-item>
+    </ul>
+  </nav>
+  

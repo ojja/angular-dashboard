@@ -1,0 +1,13 @@
+<li [class.active]="isActive()">
+    <a [href]="href" (click)="toggleSubMenu($event)">
+      <img [src]="iconName" alt="{{ title }}" class="nav-icon" />
+      <span>{{ title }}</span>
+    </a>
+  
+    <ul *ngIf="isSubMenuOpen" [class.active]="isActive()">
+      <li *ngFor="let subItem of subItems" [class.active]="router.url === subItem.href">
+        <a [routerLink]="subItem.href">{{ subItem.title }}</a>
+      </li>
+    </ul>
+  </li>
+  
