@@ -1,12 +1,35 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="username">Username:</label>
-    <input id="username" formControlName="username" type="text" />
+  <app-input-with-label
+    label="Username"
+    type="text"
+    placeholder="Enter your username"
+    formControlName="username"
+    [required]="true"
+    icon='assets/icons/user.svg'
+  ></app-input-with-label>
+
+  <div *ngIf="formError && loginForm.get('username')?.invalid">
+    <ng-container *ngIf="loginForm.get('username')?.errors?.['required']">
+      Username is required.
+    </ng-container>
+    <ng-container *ngIf="loginForm.get('username')?.errors?.['minlength']">
+      Username must be at least 4 characters long.
+    </ng-container>
   </div>
-  <div>
-    <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password" />
+
+  <app-input-with-label
+    label="Password"
+    type="password"
+    placeholder="Enter your password"
+    formControlName="password"
+    [required]="true"
+    icon='assets/icons/lock.svg'
+  ></app-input-with-label>
+
+  <div *ngIf="formError && loginForm.get('password')?.invalid">
+    Password is required.
   </div>
+
   <div *ngIf="loginError">Login failed, please try again.</div>
-  <button type="submit">Login</button>
+  <button type="submit" class="">Login</button>
 </form>
